@@ -1,0 +1,9 @@
+elems:
+
+  - src: (tmux.conf)$
+    dst: ~/.<1>
+    only:
+      features:
+        - tmux
+
+# vim: set filetype=eruby.yaml :
