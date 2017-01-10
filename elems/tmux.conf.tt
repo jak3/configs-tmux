@@ -53,10 +53,6 @@ set -g history-limit 10240
 # programs such as shells.
 setw -g aggressive-resize on
 
-# Start indexes from 1 instead of 0, for typing accessibility.
-set -g base-index      1
-set -g pane-base-index 1
-
 # Automatic window numbers reordering.
 if-shell "[[ $TMUX_VERSION -ge 17 ]]" 'set-option -g renumber-windows on'
 
