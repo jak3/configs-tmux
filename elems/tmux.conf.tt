@@ -31,12 +31,6 @@ TMUX_COPY_CMD="<%= local! :copy_cmd %>"
 <% end -%>
 
 # ├────────────────────────────────────────────────────────────────────────────┤
-# ├→ Charset ──────────────────────────────────────────────────────────────────┤
-
-setw -g utf8        on
-set  -g status-utf8 on
-
-# ├────────────────────────────────────────────────────────────────────────────┤
 # ├→ History ──────────────────────────────────────────────────────────────────┤
 
 # Set maximum history size.
@@ -92,14 +86,6 @@ set -g escape-time 16
 # Allow multiple commands to be entered without pressing the prefix-key again in
 # the specified time milliseconds.
 set -g repeat-time 128
-
-# ├────────────────────────────────────────────────────────────────────────────┤
-# ├→ Mouse (is evil!) ─────────────────────────────────────────────────────────┤
-
-setw -g mode-mouse off
-set -g mouse-select-pane off
-set -g mouse-resize-pane off
-set -g mouse-select-window off
 
 # ├────────────────────────────────────────────────────────────────────────────┤
 # ├→ Hotkeys (general) ────────────────────────────────────────────────────────┤
