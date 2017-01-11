@@ -54,6 +54,9 @@ if-shell "[[ $TMUX_VERSION -ge 17 ]]" 'set-option -g renumber-windows on'
 bind-key C-s run \
   "for i in $(tmux lsw|awk -F: '{print $1}'); do tmux movew -s \$i' done"
 
+# Swap current window with the top one
+bind-key T swap-window -t 0
+
 # Directly expose pane titles.
 set -g set-titles on
 
