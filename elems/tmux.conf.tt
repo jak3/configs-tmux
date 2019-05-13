@@ -228,7 +228,7 @@ set -g status-justify 'centre'
 set -g status-left-length '100'
 set -g status-right-length '100'
 
-setw -g window-status-fg 'colour240'
+setw -g window-status-style 'fg=colour240'
 setw -g window-status-activity-style 'bg=colour233,fg=colour166'
 setw -g window-status-current-style 'fg=colour25'
 setw -g window-status-style 'bg=colour233'
