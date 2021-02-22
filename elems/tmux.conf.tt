@@ -127,8 +127,13 @@ bind -n C-k clear-history
 # ├→ Hotkeys (copy & paste) ───────────────────────────────────────────────────┤
 
 # [Normal mode]y or <Enter>: Copy the selected text.
-bind -t vi-copy y     copy-pipe $TMUX_COPY_CMD
-bind -t vi-copy enter copy-pipe $TMUX_COPY_CMD
+unbind-key -T copy-mode-vi Escape
+bind-key -T copy-mode-vi Escape send-keys -X cancel
+
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi V send-keys -X rectangle-toggle
+
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel $TMUX_COPY_CMD
 
 # ├────────────────────────────────────────────────────────────────────────────┤
 # ├→ Hotkeys (layout) ─────────────────────────────────────────────────────────┤
@@ -231,7 +236,6 @@ set -g status-right-length '100'
 setw -g window-status-style 'fg=colour240'
 setw -g window-status-activity-style 'bg=colour233,fg=colour166'
 setw -g window-status-current-style 'fg=colour25'
-setw -g window-status-style 'bg=colour233'
 
 set -g pane-border-style 'fg=colour236'
 set -g pane-active-border-style 'fg=colour25'
@@ -241,6 +245,11 @@ set -g message-command-style 'fg=colour145'
 set -g message-style 'fg=colour145'
 set -g message-command-style 'bg=colour236'
 
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+
 # ├────────────────────────────────────────────────────────────────────────────┤
 # ├→ Status ───────────────────────────────────────────────────────────────────┤
 
@@ -248,5 +257,10 @@ set -g status on
 
 set -g status-left '#[fg=colour108] #h #[fg=colour244]| #[fg=colour75]#S #[fg=colour244]|'
 set -g status-right '#[fg=colour244]|#[fg=colour75] #(date +"%b %d %R")'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
+run-shell ~/.tmux/plugins/sensible/sensible.tmux
+run-shell ~/.tmux/plugins/resurrect/resurrect.tmux
 
 # vim: set filetype=eruby.tmux :
